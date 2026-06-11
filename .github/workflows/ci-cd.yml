@@ -7,6 +7,24 @@ on:
     branches: [main, dev]
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install Dependecies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
   backend-ci:
     runs-on: ubuntu-latest
     steps:
