@@ -44,7 +44,7 @@ jobs:
         run: npx tsc --noEmit -p backend/tsconfig.json
 
       - name: Test Coverage
-        run: npm test:coverage:backend
+        run: npm run test:coverage:backend
 
       - name: Run Tests
         run: npm run test:backend
@@ -71,7 +71,7 @@ jobs:
         run: npx tsc --noEmit -p frontend/tsconfig.json
 
       - name: Test Coverage
-        run: npm test:coverage:frontend
+        run: npm run test:coverage:frontend
 
       - name: Run Tests
         run: npm run test:frontend
