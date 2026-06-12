@@ -18,7 +18,10 @@
     "test:backend": "npm test --workspace=@messanger/backend",
     "test:frontend": "npm test --workspace=@messanger/frontend",
     "test": "npm-run-all --parallel test:backend test:frontend",
-    "typecheck": "tsc -b backend frontend"
+    "typecheck": "tsc -b backend frontend",
+    "test:coverage:backend": "npm run test:coverage --workspace=@messanger/backend",
+    "test:coverage:frontend": "npm run test:coverage --workspace=@messanger/frontend",
+    "test:coverage": "npm-run-all --parallel test:coverage:backend test:coverage:frontend"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
