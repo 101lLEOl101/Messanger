@@ -19,7 +19,7 @@ jobs:
           node-version: '20'
           cache: npm
 
-      - name: Install Dependecies
+      - name: Install Dependencies
         run: npm ci
 
       - name: Lint
@@ -43,7 +43,7 @@ jobs:
       - name: Typecheck
         run: npx tsc --noEmit -p backend/tsconfig.json
 
-      - name: Test Coverage
+      - name: Run Tests and Coverage
         run: npm run test:coverage:backend
 
       - name: Run Tests
@@ -70,7 +70,7 @@ jobs:
       - name: Typecheck
         run: npx tsc --noEmit -p frontend/tsconfig.json
 
-      - name: Test Coverage
+      - name: Run Tests and Coverage
         run: npm run test:coverage:frontend
 
       - name: Run Tests
