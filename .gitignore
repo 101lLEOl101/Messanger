@@ -1,4 +1,6 @@
 node_modules
+backend/node_modules
+frontend/node_modules
 dist
 build
 coverage
@@ -16,9 +18,10 @@ yarn-error.log*
 .DS_Store
 .vscode/*
 !.vscode/settings.json
-.idea/workspace.xml
-.idea/tasks.xml
+.idea/
 
 .env
 .env.local
 .env.*.local
+
+backend/generated/

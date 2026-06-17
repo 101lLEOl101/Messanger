@@ -17,11 +17,15 @@
     "build": "npm run build:backend && npm run build:frontend",
     "test:backend": "npm test --workspace=@messanger/backend",
     "test:frontend": "npm test --workspace=@messanger/frontend",
-    "test": "npm-run-all --parallel test:backend test:frontend",
+    "test:int": "npm run test:int --workspace=@messanger/backend",
+    "test": "npm-run-all --parallel test:backend test:frontend test:int",
     "typecheck": "tsc -b backend frontend",
     "test:coverage:backend": "npm run test:coverage --workspace=@messanger/backend",
     "test:coverage:frontend": "npm run test:coverage --workspace=@messanger/frontend",
-    "test:coverage": "npm-run-all --parallel test:coverage:backend test:coverage:frontend"
+    "test:coverage": "npm-run-all --parallel test:coverage:backend test:coverage:frontend",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate":  "prisma migrate dev",
+    "prisma:deploy":   "prisma migrate deploy"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
