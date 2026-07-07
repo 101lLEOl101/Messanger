@@ -12,5 +12,8 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 COPY backend/package.json backend/
 RUN npm ci --omit=dev
+COPY prisma.config.ts ./
+COPY backend/prisma backend/prisma
+COPY backend/entrypoint.sh backend/entrypoint.sh
 COPY --from=builder /app/backend/dist backend/dist
-CMD ["node", "backend/dist/index.js"]
+ENTRYPOINT ["sh", "backend/entrypoint.sh"]
