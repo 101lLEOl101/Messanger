@@ -101,7 +101,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           source: docker-compose.prod.yml
-          target: ~/messanger
+          target: ~/messanger/Messanger
       - uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -112,3 +112,11 @@ jobs:
             docker compose -f docker-compose.prod.yml pull
             docker compose -f docker-compose.prod.yml up -d
             docker image prune -f
+            for i in $(seq 1 30); do
+              curl -fsS http://localhost/api/ready >/dev/null && { echo "smoke ok"; exit 0; }
+              sleep 2
+            done
+            echo "smoke FAILED — стек не поднялся"
+            docker compose -f docker-compose.prod.yml ps
+            docker compose -f docker-compose.prod.yml logs --tail=30 backend
+            exit 1
