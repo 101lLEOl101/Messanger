@@ -1,8 +1,8 @@
 import request from 'supertest';
-import { createApp } from '../app';
-import { prisma } from '../db';
+import { createApp } from '../../src/app';
+import { prisma } from '../../src/db/prisma';
 
-describe('backend integration', () => {
+describe('backend e2e', () => {
   const app = createApp();
 
   afterAll(async () => {

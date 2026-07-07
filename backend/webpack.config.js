@@ -3,7 +3,7 @@ const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   target: 'node',
-  entry: './index.ts',
+  entry: './src/index.ts',
   externals: [nodeExternals()],
   module: {
     rules: [

@@ -1,6 +1,8 @@
 import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
-import {prisma} from "./db";
+import {prisma} from "./db/prisma";
+import routes from "./routes";
+import {errorHandler} from "./middlewares/errorHandler";
 
 export function createApp(): Express {
   const app = express();
@@ -20,6 +22,9 @@ export function createApp(): Express {
       res.status(503).json({ status: 'not ready' });
     }
   });
+
+  app.use('/api', routes);
+  app.use(errorHandler);
 
   return app;
 }
