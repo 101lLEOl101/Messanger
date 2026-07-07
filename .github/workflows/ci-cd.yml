@@ -89,3 +89,26 @@ jobs:
           tags: |
             ghcr.io/101lleol101/messanger-frontend:latest
             ghcr.io/101lleol101/messanger-frontend:${{ github.sha }}
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          source: docker-compose.prod.yml
+          target: ~/messanger
+      - uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ~/messanger
+            docker compose -f docker-compose.prod.yml pull
+            docker compose -f docker-compose.prod.yml up -d
+            docker image prune -f
