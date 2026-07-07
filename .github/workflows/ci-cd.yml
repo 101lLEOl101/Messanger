@@ -112,11 +112,12 @@ jobs:
             docker compose -f docker-compose.prod.yml pull
             docker compose -f docker-compose.prod.yml up -d
             docker image prune -f
+            DOMAIN=$(grep '^DOMAIN=' .env | cut -d= -f2)
             for i in $(seq 1 30); do
-              curl -fsS http://localhost/api/ready >/dev/null && { echo "smoke ok"; exit 0; }
+              curl -fsS --resolve "$DOMAIN:443:127.0.0.1" "https://$DOMAIN/api/ready" >/dev/null && { echo "smoke ok"; exit 0; }
               sleep 2
             done
-            echo "smoke FAILED — стек не поднялся"
+            echo "smoke FAILED"
             docker compose -f docker-compose.prod.yml ps
             docker compose -f docker-compose.prod.yml logs --tail=30 backend
             exit 1
