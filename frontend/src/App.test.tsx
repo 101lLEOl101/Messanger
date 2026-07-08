@@ -1,19 +1,14 @@
 import { render, screen } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { store } from './store';
 import { App } from './App';
-
-function renderWithStore() {
-  return render(
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
-}
 
 describe('App', () => {
   it('renders the app shell', () => {
-    renderWithStore();
+    render(<App />);
     expect(screen.getByRole('heading', { name: /messanger/i })).toBeInTheDocument();
+  });
+
+  it('renders the send button', () => {
+    render(<App />);
+    expect(screen.getByRole('button', { name: /send/i })).toBeInTheDocument();
   });
 });
