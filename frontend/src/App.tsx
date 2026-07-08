@@ -1,9 +1,9 @@
-import React from 'react';
+import Button from '@mui/material/Button';
+import React from "react";
 
-export const App: React.FC = () => {
-  return (
+export const App: React.FC = () => (
     <main>
-      <h1>Messanger</h1>
+        <h1>Messanger</h1>
+        <Button variant="contained">Send</Button>
     </main>
-  );
-};
+);

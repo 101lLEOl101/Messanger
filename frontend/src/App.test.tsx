@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { store } from '../src/store';
-import { App } from '../src/App';
+import { store } from './store';
+import { App } from './App';
 
 function renderWithStore() {
   return render(
