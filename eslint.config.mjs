@@ -7,7 +7,7 @@ import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
     {
-        ignores: ['**/dist/**', '**/coverage/**', '**/node_modules/**', '**/generated/**']
+        ignores: ['**/dist/**', '**/coverage/**', '**/node_modules/**', '**/generated/**', '**/__mocks__/**'],
     },
     {
         files: ['**/*.{ts,tsx}'],
@@ -41,7 +41,7 @@ export default tseslint.config(
         },
     },
     {
-        files: ['**/*.test.{ts,tsx}', '**/tests/**'],
+        files: ['**/*.test.{ts,tsx}'],
         languageOptions: {globals: {...globals.jest}}
     }
 )

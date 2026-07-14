@@ -26,6 +26,17 @@ module.exports = (_env, argv) => {
         {
           test: /\.css$/,
           use: ['style-loader', 'css-loader']
+        },
+        {
+          test: /\.svg$/,
+          use: [
+            {
+              loader: '@svgr/webpack',
+              options: {
+                svgo: false,
+              },
+            },
+          ],
         }
       ]
     },

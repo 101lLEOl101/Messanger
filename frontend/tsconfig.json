@@ -8,10 +8,9 @@
     "jsx": "react-jsx",
     "outDir": "dist",
     "rootDir": ".",
-    "types": ["jest", "@testing-library/jest-dom"],
+    "types": ["jest", "@testing-library/jest-dom", "node"],
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src",
-    "tests"],
+  "include": ["src", "setupTests.ts"],
   "exclude": ["node_modules", "dist"]
 }
