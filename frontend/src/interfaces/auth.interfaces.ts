@@ -3,9 +3,10 @@ export interface SafeUser {
     login: string;
     createdAt: string;
 }
+
 export interface AuthResponse {
-    token: string;
     user: SafeUser;
+    token: string;
 }
 export interface AuthDto {
     login: string;

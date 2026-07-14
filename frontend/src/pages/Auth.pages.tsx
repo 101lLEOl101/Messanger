@@ -12,7 +12,6 @@ import MessAngerIcon from '../../branding/mess-anger-icon.svg';
 import {useLoginMutation, useRegisterMutation} from "../api/auth.api";
 import {AuthValues} from "../schema/auth.schema";
 import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
 import {AuthForm} from "../components/AuthForm";
 
 type Mode = 'login' | 'register';
@@ -36,13 +35,11 @@ export const AuthPage = ({initialMode}: AuthPageProps) => {
   const [registerUser, registerState] = useRegisterMutation();
   const active = mode === 'login' ? loginState : registerState;
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const onSubmit = async (values: AuthValues) => {
     try {
       if (mode === 'login') {
-        const res = await login(values).unwrap();
-        dispatch({ type: 'ADD_USER', payload: { user: res.user, token: res.token } });
+        await login(values).unwrap();
         navigate('/');
       } else {
         await registerUser(values).unwrap();
