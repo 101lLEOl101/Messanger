@@ -38,10 +38,10 @@
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "style-loader": "^4.0.0",
-    "ts-jest": "^29.2.2",
-    "ts-loader": "^9.5.1",
+    "ts-jest": "^29.4.12",
+    "ts-loader": "^9.6.2",
     "typescript": "^5.5.3",
-    "webpack": "^5.93.0",
+    "webpack": "^5.109.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4"
   }
