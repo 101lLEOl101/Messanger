@@ -73,7 +73,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: docker/build-push-action@v6
+      - uses: docker/build-push-action@v7
         with:
           context: .
           file: backend/Dockerfile
@@ -81,7 +81,7 @@ jobs:
           tags: |
             ghcr.io/101lleol101/messanger-backend:latest
             ghcr.io/101lleol101/messanger-backend:${{ github.sha }}
-      - uses: docker/build-push-action@v6
+      - uses: docker/build-push-action@v7
         with:
           context: .
           file: frontend/Dockerfile
